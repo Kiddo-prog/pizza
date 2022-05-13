@@ -1,0 +1,18 @@
+{% extends 'pizza_base.html' %}
+{% block cheese %}
+<div class="container">
+    <div>
+        <h2>{{ pizza.pizza.name }}</h2>
+        <p><span>Price: </span>${{ pizza.price }}</p>
+        <p><span>Size: </span>{{ pizza.pizza.size }}</p>
+        <p class="mt-3 font-weight-bold">Description: </span>
+            {{ pizza.description }}
+        </p>
+    </div>
+    <form action="{% url 'cart:cart_add' pizza.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_form.as_p }}
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
+</div>
+{% endblock %}

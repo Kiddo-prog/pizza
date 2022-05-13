@@ -1,0 +1,13 @@
+{% extends 'user_base.html' %}
+{% load crispy_forms_tags %}
+{% block users %}
+<div class="mx-5">
+    <h2 class="text-center">Login</h2>
+    <form method="POST" class="bootstrap">
+        {{ form|crispy }}
+        {% csrf_token %}
+    <button type="submit" class='btn btn-primary mt-3'>Login</button>
+    </form>
+    <p>Don't have an account? Click here to<a href="{% url 'user:register' %}" class="btn btn-primary mx-2">Register</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'order_base.html' %}
+{% block order %}
+<p class="fs-3 text-center font-weight-bold">Your order has been created successfully. Your order id is {{ order.id }}</p>
+<div class='d-flex justify-content-center'>
+    <a href="{% url 'pizza:list' %}" class='btn btn-primary'>Home</a>
+</div>
+{% endblock %}

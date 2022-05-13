@@ -1,0 +1,22 @@
+{% extends 'pizza_base.html' %}
+
+{% block cheese %}
+<div class="container text-white">
+    <div class="row">
+        {% for item in pizza %}
+        <div class="col-lg-4 bg-dark mx-2 p-3 my-2 text-center">
+            <a href="#" class="text-decoration-none text-white">
+                <h1>{{ item.pizza }}</h1>
+            </a>
+            <p class='font-weight-bold'>{{ item.topping }}</p>
+            <p class="text-bold fs-4">$&nbsp;{{ item.price }}</p>
+                <div class="flex justify-content-center">
+                    <a href="{{ item.get_absolute_url }}" class='btn btn-primary'>View More</a>
+                    <a href="{% url 'order:create' %}" class='btn btn-primary'>Order Now</a>
+                </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

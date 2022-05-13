@@ -1,0 +1,56 @@
+{% extends 'cart_base.html' %}
+{% block cart %}
+<div class="container">
+<h1 class="text-center">Shopping cart</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Pizza</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit Price</th>
+            <th>Price</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+            {% with pizza=item.pizza %}
+            <th scope="row">
+                {{ item.id }}
+            </th>
+                <tr>
+                    <td>
+                        {{ pizza.pizza.name }}<span>({{ pizza.topping }})</span>
+                    </td>
+                    <td>
+                        {{ item.quantity }}
+                    </td>
+                    <td>
+                        <form action="{% url 'cart:cart_remove' pizza.id %}" method="post">
+                            <input type="submit" value="Remove">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td>
+                        {{ item.price }}
+                    </td>
+                    <td>
+                        {{ item.total_price }}
+                    </td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+    </tbody>
+</table>
+<p class="flex justify-content-center">
+    <a href="{% url 'pizza:list' %}" class="btn btn-primary">Continue shopping</a>
+    <a href="{% url 'order:create' %}" class="btn btn-primary">Checkout</a>
+</p>
+</div>
+{% endblock %}
