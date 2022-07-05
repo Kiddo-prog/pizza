@@ -8,11 +8,13 @@
             <a href="#" class="text-decoration-none text-white">
                 <h1>{{ item.pizza }}</h1>
             </a>
-            <p class='font-weight-bold'>{{ item.topping }}</p>
+            <p class='font-weight-bold fs-5'>{{ item.topping }}</p>
             <p class="text-bold fs-4">$&nbsp;{{ item.price }}</p>
+            <!-- <img src="{{ item.image.url }}" alt="pizza image"> -->
+
                 <div class="flex justify-content-center">
-                    <a href="{{ item.get_absolute_url }}" class='btn btn-primary'>View More</a>
-                    <a href="{% url 'order:create' %}" class='btn btn-primary'>Order Now</a>
+                    <!-- <a href="{{ item.get_absolute_url }}" class='btn btn-primary'>View More</a> -->
+                    <a href="{{ item.get_absolute_url }}" class='btn btn-primary mt-1 w-100 fs-5'>Order Now</a>
                 </div>
 
         </div>
